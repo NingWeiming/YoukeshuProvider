@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zjhn.common.mapper.SysUserMapper">
+
+    <resultMap id="BaseResultMap" type="cn.zjhn.common.entity.SysUser">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="userName" column="user_name" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="deptId" column="dept_id" jdbcType="INTEGER"/>
+        <result property="deptname" column="deptname" jdbcType="VARCHAR"/>
+        <result property="phone" column="phone" jdbcType="VARCHAR"/>
+        <result property="identityCard" column="identity_card" jdbcType="VARCHAR"/>
+        <result property="identityCardAddress" column="identity_card_address" jdbcType="VARCHAR"/>
+        <result property="nation" column="nation" jdbcType="VARCHAR"/>
+        <result property="nativePlace" column="native_place" jdbcType="VARCHAR"/>
+        <result property="sex" column="sex" jdbcType="BIT"/>
+        <result property="isAttendance" column="is_attendance" jdbcType="BIT"/>
+        <result property="titles" column="titles" jdbcType="VARCHAR"/>
+        <result property="eeState" column="ee_state" jdbcType="INTEGER"/>
+        <result property="birthday" column="birthday" jdbcType="DATE"/>
+        <result property="registeredResidence" column="registered_residence" jdbcType="VARCHAR"/>
+        <result property="politicalOutlook" column="political_outlook" jdbcType="VARCHAR"/>
+        <result property="address" column="address" jdbcType="VARCHAR"/>
+        <result property="emergencyContact" column="emergency_contact" jdbcType="VARCHAR"/>
+        <result property="maritalStatus" column="marital_status" jdbcType="BIT"/>
+        <result property="contactRelationship" column="contact_relationship" jdbcType="VARCHAR"/>
+        <result property="bankCard" column="bank_card" jdbcType="VARCHAR"/>
+        <result property="contactNumber" column="contact_number" jdbcType="INTEGER"/>
+        <result property="education" column="education" jdbcType="VARCHAR"/>
+        <result property="academicDegree" column="academic_degree" jdbcType="VARCHAR"/>
+        <result property="graduationSchool" column="graduation_school" jdbcType="VARCHAR"/>
+        <result property="major" column="major" jdbcType="VARCHAR"/>
+        <result property="mailbox" column="mailbox" jdbcType="VARCHAR"/>
+        <result property="entryTime" column="entry_time" jdbcType="DATE"/>
+        <result property="contractCommencement" column="contract_commencement" jdbcType="DATE"/>
+        <result property="contractEnd" column="contract_end" jdbcType="DATE"/>
+        <result property="trialStart" column="trial_start" jdbcType="DATE"/>
+        <result property="trialEnd" column="trial_end" jdbcType="DATE"/>
+        <result property="terminationTime" column="termination_time" jdbcType="DATE"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,user_name,name,
+        dept_id,deptname,phone,
+        identity_card,identity_card_address,nation,
+        native_place,sex,is_attendance,
+        titles,ee_state,birthday,
+        registered_residence,political_outlook,address,
+        emergency_contact,marital_status,contact_relationship,
+        bank_card,contact_number,education,
+        academic_degree,graduation_school,major,
+        mailbox,entry_time,contract_commencement,
+        contract_end,trial_start,trial_end,
+        termination_time,remark,create_time
+    </sql>
+
+
+
+<!--    <select id="selectByParm" resultType="cn.zjhn.service.api.entity.SysUser">-->
+<!--        select u.id,u.user_name,u.name,u.dept_id,u.deptname,u.phone,u.identity_card,u.identity_card_address,u.nation,-->
+<!--        u.native_place,u.sex,u.is_attendance,u.titles,ee_state,u.birthday,u.registered_residence,u.political_outlook,u.address,u.emergency_contact,-->
+<!--        u.marital_status,u.contact_relationship,u.bank_card,u.contact_number,u.education,u.academic_degree,u.graduation_school,u.major,u.mailbox,-->
+<!--        u.entry_time,u.contract_commencement,u.contract_end,u.trial_start,u.trial_end,u.termination_time,u.remark,u.create_time-->
+<!--        from sys_user u-->
+<!--        left join sys_dept d on u.dept_id = d.Id-->
+<!--        <where>-->
+<!--&lt;!&ndash;            <if test="userName != null and userName != ''">&ndash;&gt;-->
+<!--&lt;!&ndash;                OR u.user_name like concat('%', #{body.queryparam}, '%')&ndash;&gt;-->
+<!--&lt;!&ndash;            </if>&ndash;&gt;-->
+<!--            <if test="body.queryparam != null and body.queryparam != ''">-->
+<!--                AND u.user_name like '%${body.queryparam}%'-->
+<!--            </if>-->
+<!--            <if test="body.queryparam != null and body.queryparam != ''">-->
+<!--                OR u.phone like '%${body.queryparam}%'-->
+<!--            </if>-->
+<!--            <if test="body.queryparam != null and body.queryparam != ''">-->
+<!--                OR u.name like '%${body.queryparam}%'-->
+<!--            </if>-->
+<!--            <if test="body.queryparam != null and body.queryparam != ''">-->
+<!--                OR u.native_place like '%${body.queryparam}%'-->
+<!--            </if>-->
+<!--            <if test="body.deptId != null and body.deptId != 0">-->
+<!--                AND u.dept_id IN ( SELECT d.ParentGuid FROM sys_dept t WHERE-->
+<!--                d.Id = #{body.deptid}, #{body.deptid}))-->
+<!--            </if>-->
+<!--        </where>-->
+<!--    </select>-->
+<!--    <select id="checkUserNameUnique" resultType="cn.zjhn.service.api.entity.SysUser" parameterType="java.lang.String">-->
+<!--        select id, user_name from sys_user where user_name = #{userName} limit 1-->
+<!--    </select>-->
+<!--    <select id="checkUserPhoneUnique" resultType="cn.zjhn.service.api.entity.SysUser" parameterType="java.lang.String">-->
+<!--        select id,phone from sys_user where phone = #{userphone} limit 1-->
+<!--    </select>-->
+<!--    <select id="checkUserEmail" resultType="cn.zjhn.service.api.entity.SysUser" parameterType="java.lang.String">-->
+<!--        select id,mailbox from sys_user where mailbox = #{mailbox} limit 1-->
+<!--    </select>-->
+
+<!--    <delete id="removeById" parameterType="java.lang.Long">-->
+<!--        delete from sys_user  where id in-->
+<!--        <foreach collection="array" item="userId" open="(" separator="," close=")">-->
+<!--            #{userId}-->
+<!--        </foreach>-->
+<!--    </delete>-->
+
+<!--    <update id="updateUser" parameterType="cn.zjhn.service.api.entity.SysUser">-->
+<!--        update sys_user-->
+<!--        <set>-->
+<!--            <if test="userName != null and userName != 0">user_name = #{userName},</if>-->
+<!--            <if test="name != null and name != ''">name = #{name},</if>-->
+<!--            <if test="deptId != null and deptId != ''">dept_id = #{deptId},</if>-->
+<!--            <if test="deptname != null and deptname!= ''">deptname = #{deptname},</if>-->
+<!--            <if test="phone != null and phone!= ''">phone = #{phone},</if>-->
+<!--            <if test="identityCard != null and identityCard != ''">identity_card = #{identityCard},</if>-->
+<!--            <if test="identityCardAddress != null and identityCardAddress != ''">identity_card_address = #{identityCardAddress},</if>-->
+<!--            <if test="nation != null and nation != ''">nation = #{nation},</if>-->
+<!--            <if test="nativePlace != null and nativePlace != ''">native_place = #{nativePlace},</if>-->
+<!--            <if test="sex != null and sex != ''">sex = #{sex},</if>-->
+<!--            <if test="isAttendance != null and isAttendance!=‘’">is_attendance = #{isAttendance},</if>-->
+<!--            <if test="titles != null and titles != ''">titles = #{titles},</if>-->
+<!--            <if test="eeState != null and eeState!= ''">ee_state = #{eeState},</if>-->
+<!--            <if test="birthday != null and birthday!= ''">birthday = #{birthday},</if>-->
+<!--            <if test="registeredResidence != null and registeredResidence!= ''">registered_residence = #{registeredResidence},</if>-->
+<!--            <if test="politicalOutlook != null and politicalOutlook!= ''">political_outlook = #{politicalOutlook},</if>-->
+<!--            <if test="address != null and address!= ''">address = #{address},</if>-->
+<!--            <if test="emergencyContact != null and emergencyContact!= ''">emergency_contact = #{emergencyContact},</if>-->
+<!--            <if test="maritalStatus != null and maritalStatus!= ''">marital_status = #{maritalStatus},</if>-->
+<!--            <if test="contactRelationship != null and contactRelationship!= ''">contact_relationship = #{contactRelationship},</if>-->
+<!--            <if test="bankCard != null and bankCard!= ''">bank_card = #{bankCard},</if>-->
+<!--            <if test="contactNumber != null and contactNumber!= ''">contact_number = #{contactNumber},</if>-->
+<!--            <if test="education != null and education!= ''">education = #{education},</if>-->
+<!--            <if test="academicDegree != null and academicDegree!= ''">academic_degree = #{academicDegree},</if>-->
+<!--            <if test="graduationSchool != null and graduationSchool!= ''">graduation_school = #{graduationSchool},</if>-->
+<!--            <if test="major != null and major!= ''">major = #{major},</if>-->
+<!--            <if test="mailbox != null and mailbox!= ''">mailbox = #{mailbox},</if>-->
+<!--            <if test="entryTime!= null and entryTime!= ''">entry_time = #{entryTime},</if>-->
+<!--            <if test="contractCommencement != null and contractCommencement!= ''">contract_commencement = #{contractCommencement},</if>-->
+<!--            <if test="contractEnd != null and contractEnd!= ''">contract_end = #{contractEnd},</if>-->
+<!--            <if test="trialStart != null and trialStart!= ''">trial_start = #{trialStart},</if>-->
+<!--            <if test="trialEnd != null and trialEnd!= ''">trial_end = #{trialEnd},</if>-->
+<!--            <if test="terminationTime != null and terminationTime!= ''">termination_time = #{terminationTime},</if>-->
+<!--            <if test="remark != null and remark!= ''">remark = #{remark},</if>-->
+<!--            <if test="createTime != null and createTime!= ''">create_time = #{createTime},</if>-->
+<!--        </set>-->
+<!--        where user_id = #{userId}-->
+<!--    </update>-->
+</mapper>

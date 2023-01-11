@@ -1,0 +1,26 @@
+server:
+  port: 8101
+
+spring:
+  datasource:
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://127.0.0.1:1433;DatabaseName=yks_n
+    username: sa
+    password: root
+
+  application:
+    name: provider
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+# mybatis-plus????
+mybatis-plus:
+  # xml??????????????????? Mapper ???? XML ?????
+  mapper-locations: classpath*:mapper/*Mapper.xml
+  # ???????,??package?????????
+  type-aliases-package: cn.zjhn.service.api.*.entity,cn.zjhn.service.api.*.dto
+
+grpc:
+  server:
+    port: 9090
