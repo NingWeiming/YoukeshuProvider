@@ -2,8 +2,11 @@ package cn.zjhn.common.mapper;
 
 
 import cn.zjhn.common.entity.SysUser;
+import cn.zjhn.common.util.UserPagedRequestParam;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 
 /**
@@ -16,7 +19,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 public interface SysUserMapper extends BaseMapper<SysUser> {
 
-//    Page<SysUser> selectByParm(Page<SysUser> tPage, @Param("body") UserPagedRequestParam body);
+    Page<SysUser> selectByParm(Page<SysUser> tPage, @Param("body") UserPagedRequestParam body);
 
 //    SysUser checkUserNameUnique(String userName);
 //

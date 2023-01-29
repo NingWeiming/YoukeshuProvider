@@ -1,25 +1,83 @@
 syntax = "proto3";
 
-option java_multiple_files = true;
+option java_multiple_files = false;
 option java_package = "cn.zjhn";
 option java_outer_classname = "UserServiceProto";
 
 service SysUserService {
   rpc addUsers (AddRequest) returns (AddResponse) {}
+
+  rpc streamselectUserList(selectUserListRequest) returns(stream streamselectUserListResponse){}
+
+  rpc selectUserList(selectUserListRequest) returns(selectUserListResponse){}
 }
-// The response message containing the greetings
+// addUsers
 message AddRequest {
-  int64 id = 1;
+  SysUsers user = 1;
+}
+message AddResponse {
+  int32 row = 1;
+}
 
-  string userName = 2;
+//selectUserList
+message selectUserListRequest{
+  int32 page = 1;
+  int32 pagesize = 2;
+  string body = 3;
+}
+message selectUserListResponse{
+  repeated SysUsers user = 1;
+  int32 total = 2;
+  int32  page = 3;
+}
 
-  string name = 3;
-
+message streamselectUserListResponse{
+  repeated SysUsers user = 1;
+  int32 total = 2;
+  int32  page = 3;
 
 }
-// The response message containing the greetings
-message AddResponse {
 
-  int32 row = 1;
-
+//自定义结构
+message SysUsers{
+  int64 id = 1;
+  string username = 2;
+  string name = 3;
+  int32 deptid = 4;
+  string phone = 5;
+  string identityCard = 6;
+  string identityCardAddress = 7;
+  string nation = 8;
+  string nativePlace= 9;
+  bool sex= 10;
+  bool isAttendance= 11;
+  string titles= 12;
+  int32 eeState= 13;
+  date birthday= 14;
+  string registeredResidence= 15;
+  string politicalOutlook= 16;
+  string address= 17;
+  string emergencyContact= 18;
+  bool  maritalStatus= 19;
+  string contactRelationship= 20;
+  string bankCard= 21;
+  int32 contactNumber= 22;
+  string education= 23;
+  string academicDegree= 24;
+  string graduationSchool= 25;
+  string major= 26;
+  string mailbox= 27;
+  date entryTime= 28;
+  date contractCommencement= 29;
+  date contractEnd= 30;
+  date trialStart= 31;
+  date trialEnd= 32;
+  date terminationTime= 33;
+  string remark= 34;
+  date createTime= 35;
+}
+message date {
+  int32 y = 1;
+  int32 m = 2;
+  int32 d = 3;
 }

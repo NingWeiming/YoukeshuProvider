@@ -60,42 +60,42 @@
 
 
 
-<!--    <select id="selectByParm" resultType="cn.zjhn.service.api.entity.SysUser">-->
-<!--        select u.id,u.user_name,u.name,u.dept_id,u.deptname,u.phone,u.identity_card,u.identity_card_address,u.nation,-->
-<!--        u.native_place,u.sex,u.is_attendance,u.titles,ee_state,u.birthday,u.registered_residence,u.political_outlook,u.address,u.emergency_contact,-->
-<!--        u.marital_status,u.contact_relationship,u.bank_card,u.contact_number,u.education,u.academic_degree,u.graduation_school,u.major,u.mailbox,-->
-<!--        u.entry_time,u.contract_commencement,u.contract_end,u.trial_start,u.trial_end,u.termination_time,u.remark,u.create_time-->
-<!--        from sys_user u-->
-<!--        left join sys_dept d on u.dept_id = d.Id-->
-<!--        <where>-->
-<!--&lt;!&ndash;            <if test="userName != null and userName != ''">&ndash;&gt;-->
-<!--&lt;!&ndash;                OR u.user_name like concat('%', #{body.queryparam}, '%')&ndash;&gt;-->
-<!--&lt;!&ndash;            </if>&ndash;&gt;-->
-<!--            <if test="body.queryparam != null and body.queryparam != ''">-->
-<!--                AND u.user_name like '%${body.queryparam}%'-->
+    <select id="selectByParm" resultType="cn.zjhn.common.entity.SysUser">
+        select u.id,u.user_name,u.name,u.dept_id,u.deptname,u.phone,u.identity_card,u.identity_card_address,u.nation,
+        u.native_place,u.sex,u.is_attendance,u.titles,ee_state,u.birthday,u.registered_residence,u.political_outlook,u.address,u.emergency_contact,
+        u.marital_status,u.contact_relationship,u.bank_card,u.contact_number,u.education,u.academic_degree,u.graduation_school,u.major,u.mailbox,
+        u.entry_time,u.contract_commencement,u.contract_end,u.trial_start,u.trial_end,u.termination_time,u.remark,u.create_time
+        from sys_user u
+        left join sys_dept d on u.dept_id = d.Id
+        <where>
+<!--            <if test="userName != null and userName != ''">-->
+<!--                OR u.user_name like concat('%', #{body.queryparam}, '%')-->
 <!--            </if>-->
-<!--            <if test="body.queryparam != null and body.queryparam != ''">-->
-<!--                OR u.phone like '%${body.queryparam}%'-->
-<!--            </if>-->
-<!--            <if test="body.queryparam != null and body.queryparam != ''">-->
-<!--                OR u.name like '%${body.queryparam}%'-->
-<!--            </if>-->
-<!--            <if test="body.queryparam != null and body.queryparam != ''">-->
-<!--                OR u.native_place like '%${body.queryparam}%'-->
-<!--            </if>-->
-<!--            <if test="body.deptId != null and body.deptId != 0">-->
-<!--                AND u.dept_id IN ( SELECT d.ParentGuid FROM sys_dept t WHERE-->
-<!--                d.Id = #{body.deptid}, #{body.deptid}))-->
-<!--            </if>-->
-<!--        </where>-->
-<!--    </select>-->
-<!--    <select id="checkUserNameUnique" resultType="cn.zjhn.service.api.entity.SysUser" parameterType="java.lang.String">-->
+            <if test="body.queryparam != null and body.queryparam != ''">
+                AND u.user_name like '%${body.queryparam}%'
+            </if>
+            <if test="body.queryparam != null and body.queryparam != ''">
+                OR u.phone like '%${body.queryparam}%'
+            </if>
+            <if test="body.queryparam != null and body.queryparam != ''">
+                OR u.name like '%${body.queryparam}%'
+            </if>
+            <if test="body.queryparam != null and body.queryparam != ''">
+                OR u.native_place like '%${body.queryparam}%'
+            </if>
+            <if test="body.deptId != null and body.deptId != 0">
+                AND u.dept_id IN ( SELECT d.ParentGuid FROM sys_dept t WHERE
+                d.Id = #{body.deptid}, #{body.deptid}))
+            </if>
+        </where>
+    </select>
+<!--    <select id="checkUserNameUnique" resultType="cn.zjhn.common.entity.SysUser" parameterType="java.lang.String">-->
 <!--        select id, user_name from sys_user where user_name = #{userName} limit 1-->
 <!--    </select>-->
-<!--    <select id="checkUserPhoneUnique" resultType="cn.zjhn.service.api.entity.SysUser" parameterType="java.lang.String">-->
+<!--    <select id="checkUserPhoneUnique" resultType="cn.zjhn.common.entity.SysUser" parameterType="java.lang.String">-->
 <!--        select id,phone from sys_user where phone = #{userphone} limit 1-->
 <!--    </select>-->
-<!--    <select id="checkUserEmail" resultType="cn.zjhn.service.api.entity.SysUser" parameterType="java.lang.String">-->
+<!--    <select id="checkUserEmail" resultType="cn.zjhn.common.entity.SysUser" parameterType="java.lang.String">-->
 <!--        select id,mailbox from sys_user where mailbox = #{mailbox} limit 1-->
 <!--    </select>-->
 

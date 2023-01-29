@@ -1,7 +1,10 @@
 package cn.zjhn.common.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -11,10 +14,12 @@ import java.util.Date;
  * @TableName sys_user
  */
 @Data
+@Accessors(chain = true)
 public class SysUser implements Serializable {
     /**
      * id
      */
+    @TableId(type= IdType.AUTO)
     private Long id;
 
     /**

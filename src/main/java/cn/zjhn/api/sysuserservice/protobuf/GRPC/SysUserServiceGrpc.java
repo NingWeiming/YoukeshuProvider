@@ -1,4 +1,4 @@
-package cn.zjhn.api.sysuserservice.protobuf;
+package cn.zjhn.api.sysuserservice.protobuf.GRPC;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
@@ -44,6 +44,68 @@ public final class SysUserServiceGrpc {
       }
     }
     return getAddUsersMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<UserServiceProto.selectUserListRequest,
+      UserServiceProto.streamselectUserListResponse> getStreamselectUserListMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "streamselectUserList",
+      requestType = UserServiceProto.selectUserListRequest.class,
+      responseType = UserServiceProto.streamselectUserListResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<UserServiceProto.selectUserListRequest,
+      UserServiceProto.streamselectUserListResponse> getStreamselectUserListMethod() {
+    io.grpc.MethodDescriptor<UserServiceProto.selectUserListRequest, UserServiceProto.streamselectUserListResponse> getStreamselectUserListMethod;
+    if ((getStreamselectUserListMethod = SysUserServiceGrpc.getStreamselectUserListMethod) == null) {
+      synchronized (SysUserServiceGrpc.class) {
+        if ((getStreamselectUserListMethod = SysUserServiceGrpc.getStreamselectUserListMethod) == null) {
+          SysUserServiceGrpc.getStreamselectUserListMethod = getStreamselectUserListMethod =
+              io.grpc.MethodDescriptor.<UserServiceProto.selectUserListRequest, UserServiceProto.streamselectUserListResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "streamselectUserList"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  UserServiceProto.selectUserListRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  UserServiceProto.streamselectUserListResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new SysUserServiceMethodDescriptorSupplier("streamselectUserList"))
+              .build();
+        }
+      }
+    }
+    return getStreamselectUserListMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<UserServiceProto.selectUserListRequest,
+      UserServiceProto.selectUserListResponse> getSelectUserListMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "selectUserList",
+      requestType = UserServiceProto.selectUserListRequest.class,
+      responseType = UserServiceProto.selectUserListResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<UserServiceProto.selectUserListRequest,
+      UserServiceProto.selectUserListResponse> getSelectUserListMethod() {
+    io.grpc.MethodDescriptor<UserServiceProto.selectUserListRequest, UserServiceProto.selectUserListResponse> getSelectUserListMethod;
+    if ((getSelectUserListMethod = SysUserServiceGrpc.getSelectUserListMethod) == null) {
+      synchronized (SysUserServiceGrpc.class) {
+        if ((getSelectUserListMethod = SysUserServiceGrpc.getSelectUserListMethod) == null) {
+          SysUserServiceGrpc.getSelectUserListMethod = getSelectUserListMethod =
+              io.grpc.MethodDescriptor.<UserServiceProto.selectUserListRequest, UserServiceProto.selectUserListResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "selectUserList"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  UserServiceProto.selectUserListRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  UserServiceProto.selectUserListResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new SysUserServiceMethodDescriptorSupplier("selectUserList"))
+              .build();
+        }
+      }
+    }
+    return getSelectUserListMethod;
   }
 
   /**
@@ -101,6 +163,20 @@ public final class SysUserServiceGrpc {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getAddUsersMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void streamselectUserList(UserServiceProto.selectUserListRequest request,
+        io.grpc.stub.StreamObserver<UserServiceProto.streamselectUserListResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getStreamselectUserListMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void selectUserList(UserServiceProto.selectUserListRequest request,
+        io.grpc.stub.StreamObserver<UserServiceProto.selectUserListResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSelectUserListMethod(), responseObserver);
+    }
+
     @Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -110,6 +186,20 @@ public final class SysUserServiceGrpc {
                 UserServiceProto.AddRequest,
                 UserServiceProto.AddResponse>(
                   this, METHODID_ADD_USERS)))
+          .addMethod(
+            getStreamselectUserListMethod(),
+            io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+              new MethodHandlers<
+                UserServiceProto.selectUserListRequest,
+                UserServiceProto.streamselectUserListResponse>(
+                  this, METHODID_STREAMSELECT_USER_LIST)))
+          .addMethod(
+            getSelectUserListMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                UserServiceProto.selectUserListRequest,
+                UserServiceProto.selectUserListResponse>(
+                  this, METHODID_SELECT_USER_LIST)))
           .build();
     }
   }
@@ -135,6 +225,22 @@ public final class SysUserServiceGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getAddUsersMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void streamselectUserList(UserServiceProto.selectUserListRequest request,
+        io.grpc.stub.StreamObserver<UserServiceProto.streamselectUserListResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
+          getChannel().newCall(getStreamselectUserListMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void selectUserList(UserServiceProto.selectUserListRequest request,
+        io.grpc.stub.StreamObserver<UserServiceProto.selectUserListResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getSelectUserListMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -156,6 +262,21 @@ public final class SysUserServiceGrpc {
     public UserServiceProto.AddResponse addUsers(UserServiceProto.AddRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getAddUsersMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public java.util.Iterator<UserServiceProto.streamselectUserListResponse> streamselectUserList(
+        UserServiceProto.selectUserListRequest request) {
+      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
+          getChannel(), getStreamselectUserListMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public UserServiceProto.selectUserListResponse selectUserList(UserServiceProto.selectUserListRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getSelectUserListMethod(), getCallOptions(), request);
     }
   }
 
@@ -180,9 +301,19 @@ public final class SysUserServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getAddUsersMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<UserServiceProto.selectUserListResponse> selectUserList(
+        UserServiceProto.selectUserListRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getSelectUserListMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_ADD_USERS = 0;
+  private static final int METHODID_STREAMSELECT_USER_LIST = 1;
+  private static final int METHODID_SELECT_USER_LIST = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -204,6 +335,14 @@ public final class SysUserServiceGrpc {
         case METHODID_ADD_USERS:
           serviceImpl.addUsers((UserServiceProto.AddRequest) request,
               (io.grpc.stub.StreamObserver<UserServiceProto.AddResponse>) responseObserver);
+          break;
+        case METHODID_STREAMSELECT_USER_LIST:
+          serviceImpl.streamselectUserList((UserServiceProto.selectUserListRequest) request,
+              (io.grpc.stub.StreamObserver<UserServiceProto.streamselectUserListResponse>) responseObserver);
+          break;
+        case METHODID_SELECT_USER_LIST:
+          serviceImpl.selectUserList((UserServiceProto.selectUserListRequest) request,
+              (io.grpc.stub.StreamObserver<UserServiceProto.selectUserListResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -267,6 +406,8 @@ public final class SysUserServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new SysUserServiceFileDescriptorSupplier())
               .addMethod(getAddUsersMethod())
+              .addMethod(getStreamselectUserListMethod())
+              .addMethod(getSelectUserListMethod())
               .build();
         }
       }
